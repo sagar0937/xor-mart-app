@@ -1,0 +1,29 @@
+.text-white{
+    color: #17a2b8 !important;
+}
+.row-wrapper-product-list{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.card-wrapper{
+    height: 170px !important;
+    border: 1px solid black !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5) !important;
+    cursor: pointer;
+}
+.card{
+    background-color: #fff !important;
+}
+.card-text-align{
+    text-align: center;
+    color: #17a2b8 !important;
+    margin-bottom: .2rem;
+}
+.card-bt-margin{
+    margin-bottom: 1rem;
+}
+.edit-icon{
+    position: absolute;
+    top: 9px;
+    right: 6px;
+}

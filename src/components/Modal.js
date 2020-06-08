@@ -20,6 +20,8 @@ import { Link, useHistory } from "react-router-dom";
   const toggle = () => setModal(!modal);
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
+  const [by, setBy] = useState('');
+  const [location, setLocation] = useState('');
   const { addUser } = useContext(GlobalContext);
   const history = useHistory();
 
@@ -29,6 +31,8 @@ import { Link, useHistory } from "react-router-dom";
       id: uuid(),
       name,
       desc,
+      by,
+      location
     }
     addUser(newUser);
     document.querySelector('#title').value='';
@@ -41,8 +45,14 @@ import { Link, useHistory } from "react-router-dom";
   const onChange = (e) => {
     setName(e.target.value);
   }
-  const onChange1=(e)=>{
+  const onChangeD=(e)=>{
     setDesc(e.target.value);
+  }
+  const onChangeB=(e)=>{
+    setBy(e.target.value);
+  }
+  const onChangeL=(e)=>{
+    setLocation(e.target.value);
   }
 
   return (
@@ -59,7 +69,16 @@ import { Link, useHistory } from "react-router-dom";
       </FormGroup>
       <FormGroup>
         <Label for="exampleText">Description</Label>
-        <Input type="textarea" id="desc" value ={desc} onChange={onChange1} name="desc" placeholder="Enter Descritiption" required />
+        <Input type="textarea" id="desc" value ={desc} onChange={onChangeD} name="desc" placeholder="Enter Descritiption" required />
+      </FormGroup>
+    
+      <FormGroup>
+        <Label for="exampleText">By</Label>
+        <Input type="text" id="by" value ={by} onChange={onChangeB} name="by" placeholder="Owner" required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleText">Location</Label>
+        <Input type="text" id="location" value ={location} onChange={onChangeL} name="location" placeholder="Location" required />
       </FormGroup>
       <Button type="submit" onClick={toggle}>Submit</Button>
       {/* <Link to="/add" className="btn btn-danger ml-2" onClick={toggle}>Cancel</Link> */}

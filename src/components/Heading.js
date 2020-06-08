@@ -11,7 +11,7 @@ export const Heading = () => {
           {/* <NavItem>
             <Link className="btn btn-primary" to="/add">Add User</Link>
           </NavItem> */}
-          <NavItem>
+          <NavItem>         
             <ModalExample />
           </NavItem>
         </Nav>

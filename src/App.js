@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div style={{ maxWidth: "30rem", margin: "4rem auto" }}>
+    <div >
       <GlobalProvider>
         <Router>
           <Switch>

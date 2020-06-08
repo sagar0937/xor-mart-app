@@ -27,7 +27,15 @@ export const EditProduct = (props) => {
   const onChange = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value })
   }
-
+  const onChangeD = (e) => {
+    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value })
+  }
+  const onChangeB = (e) => {
+    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value })
+  }
+  const onChangeL = (e) => {
+    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value })
+  }
   const onSubmit = (e) => {
     e.preventDefault();
     editUser(selectedUser);
@@ -35,13 +43,29 @@ export const EditProduct = (props) => {
   }
 
   return (
+  
+    <div className="container">
+    <h4>Edit Product Details Page</h4>
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label>Name</Label>
+        <Label>Title</Label>
         <Input type="text" value={selectedUser.name} onChange={onChange} name="name" placeholder="Enter user" required></Input>
       </FormGroup>
-      <Button type="submit">Edit Name</Button>
+      <FormGroup>
+        <Label>Desc</Label>
+        <Input type="textarea" value={selectedUser.desc} onChange={onChangeD} name="desc" placeholder="Enter user" required></Input>
+      </FormGroup>
+      <FormGroup>
+        <Label>By</Label>
+        <Input type="text" value={selectedUser.by} onChange={onChangeB} name="by" placeholder="Enter user" required></Input>
+      </FormGroup>
+      <FormGroup>
+        <Label>Location</Label>
+        <Input type="text" value={selectedUser.location} onChange={onChangeL} name="location" placeholder="Enter user" required></Input>
+      </FormGroup>
+      <Button type="submit">Update Product</Button>
       <Link to="/home" className="btn btn-danger ml-2">Cancel</Link>
     </Form>
+    </div>
   )
 }
