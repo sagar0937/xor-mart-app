@@ -28,6 +28,10 @@ export const ModalExample = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setName('')
+    setDesc('')
+    setBy('')
+    setLocation('')
     const newUser = {
       id: uuid(),
       name,
