@@ -10,14 +10,17 @@
     border: 1px solid black !important;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5) !important;
     cursor: pointer;
-}
-.card{
+    width: 100% !important;
     background-color: #fff !important;
 }
+/* .card{
+    background-color: #fff !important;
+} */
 .card-text-align{
     text-align: center;
     color: #17a2b8 !important;
     margin-bottom: .2rem;
+    font-size: 0.875rem;
 }
 .card-bt-margin{
     margin-bottom: 1rem;
@@ -26,4 +29,14 @@
     position: absolute;
     top: 9px;
     right: 6px;
+}
+.description-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    max-height: 32px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 0.875rem
 }

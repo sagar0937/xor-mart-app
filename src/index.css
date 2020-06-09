@@ -11,11 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.card{
+/* .card{
   height: auto !important; 
-  width: 100% !important;
-  background-color: #fff !important;
-}
+    width: 100% !important;
+    background-color: #fff !important;
+} */
 .text-white{
   color: #17a2b8 !important;
+}
+.logout {
+  position: absolute;
+  right: 93px;
+  list-style: none;
+}
+.logout a {
+  color: #fff !important;
 }
