@@ -3,7 +3,10 @@ import { Redirect } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 import "./Login.css";
 
-class Login1 extends Component {
+
+
+
+export class Login1 extends Component {
   constructor(props) {
     super(props);
 
@@ -131,4 +134,4 @@ class Login1 extends Component {
   }
 }
 
-export default Login1;
+

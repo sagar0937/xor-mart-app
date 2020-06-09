@@ -42,7 +42,7 @@ export const Login = () => {
                         type="text"
                         className="form-control"
                         placeholder="username"
-                       
+                        value={username}
                         onChange={(e)=>setUsername(e.target.value)}
                       />
                     </div>
@@ -56,7 +56,7 @@ export const Login = () => {
                         type="password"
                         className="form-control"
                         placeholder="password"
-                      
+                      value={password}
                         onChange={(e)=>setPassword(e.target.value)}
                       />
                     </div>

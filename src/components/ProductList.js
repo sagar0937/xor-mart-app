@@ -11,6 +11,7 @@ export const ProductList = () => {
     console.log(id);
   }
   const { users } = useContext(GlobalContext);
+
   return (
     <>
       {users.length > 0 ? (
