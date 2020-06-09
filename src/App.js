@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Login1}  from "./components/Login1";
+import {Login}  from "./components/Login";
 import { Home } from "./components/Home";
 import { AddProduct } from "./components/AddProduct";
 import { EditProduct } from "./components/EditProduct";
@@ -18,7 +18,7 @@ function App() {
         <Router>
           <Switch>
             {/* <Route exact path="/" component={() => <Home users={users} setUsers={setUsers} />} /> */}
-            <Route exact path="/" component={Login1} />
+            <Route exact path="/" component={Login} />
             <Route  path="/home" component={Home} />
             <Route path="/add" component={AddProduct} />
             <Route path="/edit/:id" component={EditProduct} />

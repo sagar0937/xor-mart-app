@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Link , Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { Link , Redirect } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css'
 import './Login.css'; 
 
 
 
-export const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [helperText, setHelperText] = useState('');
-  const [error, setError] = useState(false);
+export const Login = (props) => {
+  const [username, setUsername] = useState('AA');
+  const [password, setPassword] = useState('AAA');
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  // const [helperText, setHelperText] = useState('');
+  // const [error, setError] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === 'AA' && password === 'AAA') {
-      return  <Redirect to='/home' />
+      return props.history.push("/home");
+      // return  <Redirect to='/home' />
     } else {
-      setError(true);
-      setHelperText('Incorrect username or password')
+      // setError(true);
+      // setHelperText('Incorrect username or password')
     }
   };
 
