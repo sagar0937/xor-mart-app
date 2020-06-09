@@ -36,8 +36,6 @@ export const ModalExample = (props) => {
       location,
     };
     addUser(newUser);
-    document.querySelector("#title").value = "";
-    document.querySelector("#desc").value = "";
     history.push("/home");
   };
 

@@ -74,7 +74,7 @@ export const SearchBar = () => {
   }, [searchTerm]);
 
   return (
-    <div className="App">
+    <div className="SearchBar">
       <input
         type="text"
         placeholder="Search"
@@ -82,8 +82,9 @@ export const SearchBar = () => {
         onChange={handleChange}
       />
       <>
+      {users.length > 0 ? (
          <Row className="row-wrapper-product-list">
-          {searchResults.map((user) => (
+          {users.map((user) => (
             <Col className="card-bt-margin" md={4} key={user.id}>
               <Card
                 body
@@ -111,6 +112,9 @@ export const SearchBar = () => {
             </Col>
           ))}
         </Row>
+        ) : (
+        <h4 className="text-center">No Product</h4>
+      )}
       </>
     </div>
   );
