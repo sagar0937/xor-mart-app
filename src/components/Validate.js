@@ -3,7 +3,10 @@ import { Formik } from "formik";
 //import { Link , Redirect,useHistory  } from 'react-router-dom';
 // import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import 'font-awesome/css/font-awesome.min.css'
 import './Validate.css'
+import './Login.css'; 
+
 
  export const ValidatedLoginForm = (props) => (
     
@@ -70,7 +73,7 @@ import './Validate.css'
       return (
           <>
         <div className="d-flex justify-content-center custom-login-wrp">
-        <div className="card">
+        <div className="card-login">
           <div className="card-header">
             <h3>Sign In</h3>
           </div>
