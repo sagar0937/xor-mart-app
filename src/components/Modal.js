@@ -35,8 +35,8 @@ export const ModalExample = (props) => {
     const newUser = {
       id: uuid(),
       name,
+      by:localStorage.getItem('username'),
       desc,
-      by,
       location,
     };
     addUser(newUser);
@@ -49,9 +49,9 @@ export const ModalExample = (props) => {
   const onChangeD = (e) => {
     setDesc(e.target.value);
   };
-  const onChangeB = (e) => {
-    setBy(e.target.value);
-  };
+  // const onChangeB = (e) => {
+  //   setBy(e.target.value);
+  // };
   const onChangeL = (e) => {
     setLocation(e.target.value);
   };
@@ -91,7 +91,7 @@ export const ModalExample = (props) => {
                 required
               />
             </FormGroup>
-
+{/* 
             <FormGroup>
               <Label for="exampleText">By</Label>
               <Input
@@ -103,7 +103,7 @@ export const ModalExample = (props) => {
                 placeholder="Owner"
                 required
               />
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup>
               <Label for="exampleText">Location</Label>
               <Input

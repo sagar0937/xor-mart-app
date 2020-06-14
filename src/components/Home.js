@@ -2,12 +2,14 @@ import React from 'react';
 import { Heading } from "./Heading";
 // import { ProductList } from "./ProductList";
 import  { CardList }  from "./CardList";
+import { useHistory  } from 'react-router-dom';
 
 export const Home = () => {
+  const history = useHistory();
   return (
     <>
     <div className="container">
-      <Heading />
+      <Heading name={history}/>
       <CardList />
       </div>
     </>

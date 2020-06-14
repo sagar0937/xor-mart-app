@@ -11,6 +11,7 @@ export const EditProduct = (props) => {
   });
   const history = useHistory();
   const currentUserId = props.match.params.id;
+  console.log("currentUserId",currentUserId)
 
   useEffect(() => {
     const userId = currentUserId;
@@ -71,6 +72,7 @@ export const EditProduct = (props) => {
             name="by"
             placeholder="Enter user"
             required
+            disabled={true}
           ></Input>
         </FormGroup>
         <FormGroup>

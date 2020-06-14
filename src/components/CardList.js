@@ -1,13 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Row, Col, CardTitle, CardText, Card } from "reactstrap";
 import { Link } from "react-router-dom";
+import Popup from './Popup';
 import "./CardList.css";
 
+
 export const CardList = () => {
-  function OpenModalPop(id) {
-    //console.log(id);
-  }
+  const current = localStorage.getItem('username');
+  console.log(current)
+  //  function OpenModalPop(id) {
+  //   togglePopup(id);
+  //  }
   const { users } = useContext(GlobalContext);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
@@ -35,7 +39,7 @@ export const CardList = () => {
   }, [searchTerm,users]);
 
   return (
-    <div className="SearchBar">
+    <div className="SearchBar"> 
       <input
         type="text"
         placeholder="Search"
@@ -51,8 +55,7 @@ export const CardList = () => {
                 <Card
                   body
                   className="card-wrapper"
-                  key={user.id}
-                  onClick={() => OpenModalPop(user.id)}
+                  key={user.id}                
                 >
                   <CardTitle className="card-text-align font-size-t">
                     {user.name}
@@ -66,11 +69,10 @@ export const CardList = () => {
                   <CardText className="card-text-align">
                     Location :<span className="sub-text">{user.location}</span>
                   </CardText>
-                  {/* <Link to={`/edit/${user.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>                 */}
-                  <Link to={`/edit/${user.id}`}>
-                    {" "}
-                    <i className="fa fa-edit edit-icon"></i>
-                  </Link>
+                  {/* <Link to={`/edit/${user.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>                 */}                 
+                  <Link to={`/edit/${user.id}`}>                  
+                    {current == user.by ? <i className="fa fa-edit edit-icon"> </i> : ''}
+                  </Link>               
                   {/* <Button onClick={() => removeUser(user.id)} color="danger">Delete</Button>              */}
                 </Card>
               </Col>
@@ -79,7 +81,7 @@ export const CardList = () => {
         ) : (
           <h4 className="text-center">No Product</h4>
         )}
-      </>
+      </>   
     </div>
   );
 };
