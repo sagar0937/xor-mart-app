@@ -2,7 +2,7 @@ import React, { useContext, useEffect,useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Row, Col, CardTitle, CardText, Card } from "reactstrap";
 import { Link } from "react-router-dom";
-import Popup from './Popup';
+// import Popup from './Popup';
 import "./CardList.css";
 
 
