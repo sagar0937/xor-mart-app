@@ -12,6 +12,7 @@ import {
 import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuid } from "uuid";
 import { Link, useHistory } from "react-router-dom";
+import 'font-awesome/css/font-awesome.min.css'
 
 export const ModalExample = (props) => {
   const { className } = props;
@@ -58,15 +59,18 @@ export const ModalExample = (props) => {
 
   return (
     <div>
-      <Link to="#" className="btn btn-danger ml-2" onClick={toggle}>
+      <Link to="#" className="btn btn-danger ml-2 d-none d-lg-block" onClick={toggle}>
         Add
+      </Link>
+      <Link to="#" className="d-lg-none" onClick={toggle}>
+      <i className  ="fa fa-plus" aria-hidden="true"></i>
       </Link>
       {/* <Link className="btn btn-danger ml-2" href="/">Logout</Link> */}
       {/* <Button color="danger" onClick={toggle}>Add</Button> */}
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Add Product</ModalHeader>
         <ModalBody>
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={onSubmit} autocomplete="off">
             <FormGroup>
               <Label>Title</Label>
               <Input
@@ -77,6 +81,7 @@ export const ModalExample = (props) => {
                 name="name"
                 placeholder="Enter title"
                 required
+                // autoComplete="new-password"
               ></Input>
             </FormGroup>
             <FormGroup>

@@ -9,21 +9,30 @@ import {
   Container,
 } from "reactstrap";
 import ModalExample from "./Modal";
+import "font-awesome/css/font-awesome.min.css";
 
 export const Heading = (props) => {
-  function logOut(){
-   localStorage.getItem('username');
-    localStorage.removeItem('username')
-   // window.location.href="http://localhost:3000"
-   return props.name.push('/')
+  function logOut() {
+    localStorage.getItem("username");
+    localStorage.removeItem("username");
+    // window.location.href="http://localhost:3000"
+    return props.name.push("/");
     //return  <Redirect to='/' />
   }
   return (
     <Navbar color="dark" dark>
       <Container>
-        <NavbarBrand href="/"> Xoriant Advertising Portal</NavbarBrand>
+        <NavbarBrand href="/" className="nav-brand-title">
+          {" "}
+          Xoriant Advertising Portal
+        </NavbarBrand>
         <NavItem className="logout">
-          <NavLink  onClick={logOut}>Logout</NavLink>
+          <NavLink className="d-none d-lg-block" onClick={logOut}>
+            Logout
+          </NavLink>
+          <NavLink className="d-lg-none" onClick={logOut}>
+            <i className="fa fa-sign-out" aria-hidden="true"></i>
+          </NavLink>
         </NavItem>
         <Nav>
           {/* <NavItem>

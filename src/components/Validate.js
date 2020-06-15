@@ -14,8 +14,7 @@ import './Login.css';
     initialValues={{ username: "", password: "" }}
     
     onSubmit={(values, { setSubmitting }) => {
-        console.log(values)
-        console.log(props)
+  
     //   setTimeout(() => {
     //     console.log("Logging in", values);
     //     //return <Redirect to='/home' />
