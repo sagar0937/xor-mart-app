@@ -70,7 +70,7 @@ export const ModalExample = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Add Product</ModalHeader>
         <ModalBody>
-          <Form onSubmit={onSubmit} autocomplete="off">
+          <Form onSubmit={onSubmit} autoComplete="off">
             <FormGroup>
               <Label>Title</Label>
               <Input

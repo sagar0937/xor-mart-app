@@ -1,9 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { Row, Col, CardTitle, CardText, Card } from "reactstrap";
+import {
+  Row,
+  Col,
+  CardTitle,
+  CardText,
+  Card,
+  Modal,
+  ModalBody,
+  Input,
+  ModalHeader,
+} from "reactstrap";
 //import { Link } from "react-router-dom";
 // import Popup from './Popup';
 import "./CardList.css";
+//import "./Popup.css";
 import { ModalExample1 } from "./EditModal";
 
 export const CardList = () => {
@@ -15,33 +26,53 @@ export const CardList = () => {
   const { users } = useContext(GlobalContext);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  //const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState({});
+
+  const [modal, setModal] = useState(false);
+
+  const toggleClose = () => setModal(!modal);
+  const closeBtn = (
+    <button className="close" onClick={toggleClose}>
+      &times;
+    </button>
+  );
+
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
+  const togglePopup = (u) => {
+    setUser(u);
+    // setIsOpen(true);
+    setModal(true);
   };
-  //  useEffect(() => {
-  //     const results = users.filter(person =>{
-  //       return person.name.toLowerCase().includes(searchTerm)
-  //     }
 
-  //     );
-  //     setSearchResults(results);
-  //   }, [searchTerm]);
+  // const togglePopupHide = (u) => {
+  //   setUser(u)
+  //   //setIsOpen(false);
+  //   setModal(false)
+  // };
+
+   useEffect(() => {
+      const results = users.filter(person =>{
+        return person.name.toLowerCase().includes(searchTerm)
+      }
+
+      );
+      setSearchResults(results);
+    }, [searchTerm]);
 
   useEffect(() => {
     setSearchResults(users);
   }, [users]);
 
-  useEffect(() => {
-    const results = users.filter((person) => {
-      return person.name.toLowerCase().includes(searchTerm);
-    });
-    setSearchResults(results);
-  }, [searchTerm, users]);
+  // useEffect(() => {
+  //   const results = users.filter((person) => {
+  //     return person.name.toLowerCase().includes(searchTerm);
+  //   });
+  //   setSearchResults(results);
+  // }, [searchTerm, users]);
 
   return (
     <div className="SearchBar">
@@ -62,14 +93,12 @@ export const CardList = () => {
                     {user.name}
                   </CardTitle>
                   <CardText
-                    onClick={togglePopup}
+                    onClick={() => togglePopup(user)}
                     className="card-text-align description-text font-size-t"
                   >
                     {user.desc}
                   </CardText>
-                  {isOpen && (
-                    <Popup content={user.desc} handleClose={togglePopup} />
-                  )}
+
                   <CardText className="card-text-align">
                     By:<span className="sub-text">{user.by}</span>
                   </CardText>
@@ -98,18 +127,46 @@ export const CardList = () => {
           <h4 className="text-center">No Product</h4>
         )}
       </>
+      {/* {isOpen && (
+                    <Popup content={user.desc} handleClose={togglePopupHide} />
+                  )} */}
+      {modal && (
+        <ModalPopUp
+          content={user.desc}
+          modal={modal}
+          toggle1={togglePopup}
+          closeBtn={closeBtn}
+        />
+      )}
     </div>
   );
 };
-export const Popup = (props) => {
+// export const Popup = (props) => {
+//   return (
+//     <div className="popup-box">
+//       <div className="box">
+//         <span className="close-icon" onClick={props.handleClose}>
+//           x
+//         </span>
+//         <textarea value={props.content} row={4}/>
+//       </div>
+//     </div>
+//   );
+// };
+
+//modal
+
+export const ModalPopUp = (props) => {
   return (
-    <div className="popup-box">
-      <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>
-          x
-        </span>
-        {props.content}
-      </div>
+    <div>
+      <Modal isOpen={props.modal} toggle={props.toggle1}>
+        <ModalHeader toggle={props.toggle1} close={props.closeBtn}>
+          Description
+        </ModalHeader>
+        <ModalBody>
+          <Input type="textarea" value={props.content} rows={5} />
+        </ModalBody>
+      </Modal>
     </div>
   );
 };

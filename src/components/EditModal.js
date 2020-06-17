@@ -21,12 +21,17 @@ export const ModalExample1 = (props) => {
     editUser(selectedUser);
     setModal(!modal);
   };
+  // useEffect(() => {
+  //   const selectedUser = users.find((user) => user.id === props.id);
+  //   setSelectedUser(selectedUser);
+  //    console.log("edit");
+  // }, [props.id, users]);
+
   useEffect(() => {
-    //const userId = currentUserId;
     const selectedUser = users.find((user) => user.id === props.id);
     setSelectedUser(selectedUser);
-    // console.log("edit");
-  }, [props.id, users]);
+     //console.log("edit");
+  }, []);
 
   //const currentUserId = props.match.params.id;
   //console.log("currentUserId",currentUserId)
@@ -44,7 +49,6 @@ export const ModalExample1 = (props) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-
     history.push("/home");
   };
   return (
@@ -70,7 +74,7 @@ export const ModalExample1 = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Edit Product</ModalHeader>
         <ModalBody>
-          <Form onSubmit={onSubmit} autocomplete="off">
+          <Form onSubmit={onSubmit} autoComplete="off">
             <FormGroup>
               <Label>Title</Label>
               <Input
