@@ -1,23 +1,29 @@
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { Link, useHistory } from "react-router-dom";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { Form, FormGroup, Label, Input } from "reactstrap";
+import "font-awesome/css/font-awesome.min.css";
 
 export const EditProduct = (props) => {
+  
+  const { className } = props;
+  const [modal, setModal] = useState(false);
   const { editUser, users } = useContext(GlobalContext);
   const [selectedUser, setSelectedUser] = useState({
     id: "",
     name: "",
   });
   const history = useHistory();
-  const currentUserId = props.match.params.id;
-  console.log("currentUserId",currentUserId)
+  const toggle = (users) => {
+    editUser(selectedUser);
+    setModal(!modal);
+  };
 
   useEffect(() => {
-    const userId = currentUserId;
-    const selectedUser = users.find((user) => user.id === userId);
+    const selectedUser = users.find((user) => user.id === props.id);
     setSelectedUser(selectedUser);
-  }, [currentUserId, users]);
+  }, []);
 
   const onChange = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
@@ -25,72 +31,67 @@ export const EditProduct = (props) => {
   const onChangeD = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
   };
-  const onChangeB = (e) => {
-    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
-  };
+
   const onChangeL = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    editUser(selectedUser);
     history.push("/home");
   };
-
   return (
-    <div className="container">
-      <h4>Edit Product Details Page</h4>
-      <Form onSubmit={onSubmit}>
-        <FormGroup>
-          <Label>Title</Label>
-          <Input
-            type="text"
-            value={selectedUser.name}
-            onChange={onChange}
-            name="name"
-            placeholder="Enter user"
-            required
-          ></Input>
-        </FormGroup>
-        <FormGroup>
-          <Label>Desc</Label>
-          <Input
-            type="textarea"
-            value={selectedUser.desc}
-            onChange={onChangeD}
-            name="desc"
-            placeholder="Enter user"
-            required
-          ></Input>
-        </FormGroup>
-        <FormGroup>
-          <Label>By</Label>
-          <Input
-            type="text"
-            value={selectedUser.by}
-            onChange={onChangeB}
-            name="by"
-            placeholder="Enter user"
-            required
-            disabled={true}
-          ></Input>
-        </FormGroup>
-        <FormGroup>
-          <Label>Location</Label>
-          <Input
-            type="text"
-            value={selectedUser.location}
-            onChange={onChangeL}
-            name="location"
-            placeholder="Enter user"
-            required
-          ></Input>
-        </FormGroup>
-        <Button type="submit">Update Product</Button>
-        <Link to="/home" className="btn btn-danger ml-2">
-          Cancel
-        </Link>
-      </Form>
+    <div>
+      {props.currentUser === props.userBy ? (
+        <i className="fa fa-edit edit-icon" onClick={toggle}>
+          {" "}
+        </i>
+      ) : (
+        ""
+      )}
+
+      <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle}>Edit Product</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={onSubmit} autoComplete="off">
+            <FormGroup>
+              <Label>Title</Label>
+              <Input
+                type="text"
+                value={selectedUser.name}
+                onChange={onChange}
+                name="name"
+                required
+              ></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleText">Description</Label>
+              <Input
+                type="textarea"
+                value={selectedUser.desc}
+                onChange={onChangeD}
+                name="desc"
+                required
+              ></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleText">Location</Label>
+              <Input
+                type="text"
+                value={selectedUser.location}
+                onChange={onChangeL}
+                name="location"
+                required
+              ></Input>
+            </FormGroup>
+            <Button color="primary" type="submit" onClick={toggle}>
+              Product Update
+            </Button>
+            <Button type="text" className="ml-2" onClick={toggle}>
+              Cancel
+            </Button>
+          </Form>
+        </ModalBody>
+      </Modal>
     </div>
   );
 };

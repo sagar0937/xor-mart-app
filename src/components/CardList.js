@@ -11,24 +11,15 @@ import {
   Input,
   ModalHeader,
 } from "reactstrap";
-//import { Link } from "react-router-dom";
-// import Popup from './Popup';
 import "./CardList.css";
-//import "./Popup.css";
-import { ModalExample1 } from "./EditModal";
+import { EditProduct } from "./EditProduct";
 
 export const CardList = () => {
   const current = localStorage.getItem("username");
-  //console.log(current);
-  //  function OpenModalPop(id) {
-  //   togglePopup(id);
-  //  }
   const { users } = useContext(GlobalContext);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
-  //const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({});
-
   const [modal, setModal] = useState(false);
 
   const toggleClose = () => setModal(!modal);
@@ -44,35 +35,19 @@ export const CardList = () => {
 
   const togglePopup = (u) => {
     setUser(u);
-    // setIsOpen(true);
     setModal(true);
   };
 
-  // const togglePopupHide = (u) => {
-  //   setUser(u)
-  //   //setIsOpen(false);
-  //   setModal(false)
-  // };
-
-   useEffect(() => {
-      const results = users.filter(person =>{
-        return person.name.toLowerCase().includes(searchTerm)
-      }
-
-      );
-      setSearchResults(results);
-    }, [searchTerm]);
+  useEffect(() => {
+    const results = users.filter((person) => {
+      return person.name.toLowerCase().includes(searchTerm);
+    });
+    setSearchResults(results);
+  }, [searchTerm]);
 
   useEffect(() => {
     setSearchResults(users);
   }, [users]);
-
-  // useEffect(() => {
-  //   const results = users.filter((person) => {
-  //     return person.name.toLowerCase().includes(searchTerm);
-  //   });
-  //   setSearchResults(results);
-  // }, [searchTerm, users]);
 
   return (
     <div className="SearchBar">
@@ -98,27 +73,22 @@ export const CardList = () => {
                   >
                     {user.desc}
                   </CardText>
-
                   <CardText className="card-text-align">
                     By:<span className="sub-text">{user.by}</span>
                   </CardText>
                   <CardText className="card-text-align">
                     Location :<span className="sub-text">{user.location}</span>
                   </CardText>
-                  {/* <Link to={`/edit/${user.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>                 */}
-                  {/* <Link to={`/edit/${user.id}`}>                   */}
                   {current === user.by ? (
                     <i className="fa fa-edit edit-icon"> </i>
                   ) : (
                     ""
                   )}
-                  {/* </Link>  */}
-                  <ModalExample1
+                  <EditProduct
                     id={user.id}
                     currentUser={current}
                     userBy={user.by}
                   />
-                  {/* <Button onClick={() => removeUser(user.id)} color="danger">Delete</Button>              */}
                 </Card>
               </Col>
             ))}
@@ -127,9 +97,7 @@ export const CardList = () => {
           <h4 className="text-center">No Product</h4>
         )}
       </>
-      {/* {isOpen && (
-                    <Popup content={user.desc} handleClose={togglePopupHide} />
-                  )} */}
+
       {modal && (
         <ModalPopUp
           content={user.desc}
@@ -141,20 +109,6 @@ export const CardList = () => {
     </div>
   );
 };
-// export const Popup = (props) => {
-//   return (
-//     <div className="popup-box">
-//       <div className="box">
-//         <span className="close-icon" onClick={props.handleClose}>
-//           x
-//         </span>
-//         <textarea value={props.content} row={4}/>
-//       </div>
-//     </div>
-//   );
-// };
-
-//modal
 
 export const ModalPopUp = (props) => {
   return (

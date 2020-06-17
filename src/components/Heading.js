@@ -8,7 +8,7 @@ import {
   NavbarBrand,
   Container,
 } from "reactstrap";
-import ModalExample from "./Modal";
+import ModalExample from "./AddProduct";
 import "font-awesome/css/font-awesome.min.css";
 
 export const Heading = (props) => {
@@ -16,9 +16,7 @@ export const Heading = (props) => {
   function logOut() {
     localStorage.getItem("username");
     localStorage.removeItem("username");
-    // window.location.href="http://localhost:3000"
     return props.name.push("/");
-    //return  <Redirect to='/' />
   }
   return (
     <Navbar color="dark" dark>
@@ -36,15 +34,11 @@ export const Heading = (props) => {
           </NavLink>
         </NavItem>
         <NavItem className="welcome-user">
-          <NavLink className="d-none d-lg-block welcome-user-text" >
-            Welcome  {username}
+          <NavLink className="d-none d-lg-block welcome-user-text">
+            Welcome <span className="username-text-color">{username}</span>
           </NavLink>
-         
         </NavItem>
         <Nav>
-          {/* <NavItem>
-            <Link className="btn btn-primary" to="/add">Add User</Link>
-          </NavItem> */}
           <NavItem>
             <ModalExample />
           </NavItem>

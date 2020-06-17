@@ -1,6 +1,5 @@
 import React from 'react';
 import { Heading } from "./Heading";
-// import { ProductList } from "./ProductList";
 import  { CardList }  from "./CardList";
 import { useHistory  } from 'react-router-dom';
 
