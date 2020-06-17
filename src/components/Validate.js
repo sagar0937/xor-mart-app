@@ -51,10 +51,10 @@ import './Login.css';
     validationSchema={Yup.object().shape({
         username: Yup.string()
        
-        .required("No Username provided"),
+        .required("No username provided"),
       password: Yup.string()
         .required("No password provided.")
-        .min(8, "Password is too short - should be 6 chars minimum.")
+        .min(6, "Password is too short - should be 6 chars minimum.")
         .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/, "Password must contain atleast small,capital letter and special symbol.")
         //let pattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/
     })}
@@ -64,7 +64,7 @@ import './Login.css';
         values,
         touched,
         errors,
-        isSubmitting,
+        //isSubmitting,
         handleChange,
         handleBlur,
         handleSubmit

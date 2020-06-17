@@ -17,7 +17,7 @@ export const ModalExample1 = (props) => {
   });
   const history = useHistory();
   const toggle = (users) => {
-    console.log("selectedUser", selectedUser);
+   // console.log("selectedUser", selectedUser);
     editUser(selectedUser);
     setModal(!modal);
   };
@@ -41,9 +41,9 @@ export const ModalExample1 = (props) => {
   const onChangeD = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
   };
-  const onChangeB = (e) => {
-    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
-  };
+  // const onChangeB = (e) => {
+  //   setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
+  // };
   const onChangeL = (e) => {
     setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
   };
@@ -98,7 +98,7 @@ export const ModalExample1 = (props) => {
               ></Input>
             </FormGroup>
 
-            <FormGroup>
+            {/* <FormGroup>
               <Label for="exampleText">By</Label>
               <Input
                 type="text"
@@ -109,7 +109,7 @@ export const ModalExample1 = (props) => {
                 required
                 disabled={true}
               ></Input>
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup>
               <Label for="exampleText">Location</Label>
               <Input

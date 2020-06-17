@@ -12,6 +12,7 @@ import ModalExample from "./Modal";
 import "font-awesome/css/font-awesome.min.css";
 
 export const Heading = (props) => {
+  let username = localStorage.getItem("username");
   function logOut() {
     localStorage.getItem("username");
     localStorage.removeItem("username");
@@ -33,6 +34,12 @@ export const Heading = (props) => {
           <NavLink className="d-lg-none" onClick={logOut}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>
           </NavLink>
+        </NavItem>
+        <NavItem className="welcome-user">
+          <NavLink className="d-none d-lg-block welcome-user-text" >
+            Welcome  {username}
+          </NavLink>
+         
         </NavItem>
         <Nav>
           {/* <NavItem>

@@ -32,8 +32,18 @@ code {
   right: 93px;
   list-style: none;
 }
+.welcome-user{
+  list-style: none;
+}
+.welcome-user-text{
+  color: #fff !important;
+}
 .logout a {
   color: #fff !important;
+}
+a.d-lg-none.nav-link {
+  position: relative;
+  left: 43px;
 }
 /* .error {
   color: red;
